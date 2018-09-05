@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hknews/model/Api.dart';
 import 'package:hknews/model/BaseData.dart';
 import 'package:hknews/model/EPaper.dart';
-import 'package:hknews/page/EPaperDetail.dart';
+import 'package:hknews/page/WebPage.dart';
 import 'package:hknews/widget/EPaperItem.dart';
 
 class EPaperPage extends StatefulWidget {
@@ -82,7 +82,7 @@ class _EPaperPageState extends State<EPaperPage>
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return EPaperDetail(url: value.ePaperUrl);
+                        return WebPage(url: value.ePaperUrl);
                       }));
                     },
                     child: Container(),

@@ -3,9 +3,16 @@ import 'package:hknews/HKNewsColors.dart';
 
 class TitleAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Widget title;
+  final Widget leftIcon;
+  final Widget rightIcon;
   final BuildContext context;
 
-  const TitleAppBar({Key key, @required this.context, @required this.title})
+  const TitleAppBar(
+      {Key key,
+      @required this.context,
+      @required this.title,
+      this.leftIcon,
+      this.rightIcon})
       : super(key: key);
 
   @override
@@ -40,8 +47,24 @@ class _TitleAppBarState extends State<TitleAppBar> {
         ),
       ),
       height: 48.0 + MediaQuery.of(context).padding.top,
-      child: Center(
-        child: widget.title,
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: 48.0,
+            height: 48.0,
+            child: widget.leftIcon,
+          ),
+          Expanded(
+            child: Center(
+              child: widget.title,
+            ),
+          ),
+          Container(
+            width: 48.0,
+            height: 48.0,
+            child: widget.rightIcon,
+          )
+        ],
       ),
     );
   }

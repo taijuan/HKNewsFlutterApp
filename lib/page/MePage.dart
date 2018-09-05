@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hknews/HKNewsColors.dart';
 import 'package:hknews/localization/HKNewsLocalizations.dart';
+import 'package:hknews/page/WebPage.dart';
 import 'package:hknews/widget/TitleAppBar.dart';
 
 class MePage extends StatefulWidget {
@@ -41,8 +42,15 @@ class _MePageState extends State<MePage>
             "images/facebook.webp",
             HKNewsLocalizations.of(context).facebook,
             () {
-              Fluttertoast.showToast(
-                  msg: HKNewsLocalizations.of(context).facebook);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return WebPage(
+                        url: "https://www.facebook.com/chinadailyhkedition/");
+                  },
+                ),
+              );
             },
           ),
           Container(
@@ -53,8 +61,15 @@ class _MePageState extends State<MePage>
             "images/twitter.webp",
             HKNewsLocalizations.of(context).twitter,
             () {
-              Fluttertoast.showToast(
-                  msg: HKNewsLocalizations.of(context).twitter);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return WebPage(
+                        url: "https://twitter.com/chinadailyasia");
+                  },
+                ),
+              );
             },
           ),
           Container(

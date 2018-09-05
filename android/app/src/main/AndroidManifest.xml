@@ -15,7 +15,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:icon="@drawable/logo"
-        android:label="hknews">
+        android:label="China Daily &#045; News">
         <activity
             android:name="com.zuiweng.hknews.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
