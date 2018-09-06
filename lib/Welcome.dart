@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
-  static final String sName = "/";
-
   @override
   _WelcomePageState createState() => _WelcomePageState();
 }

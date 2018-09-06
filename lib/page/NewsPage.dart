@@ -51,8 +51,6 @@ class _NewsPageState extends State<NewsPage>
           context: context,
           title: Image.asset(
             "images/top_logo.webp",
-            fit: BoxFit.fitWidth,
-            height: 20.0,
           ),
         ),
         body: Scaffold(
