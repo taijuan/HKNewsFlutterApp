@@ -15,6 +15,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:icon="@drawable/logo"
+        android:theme="@style/LaunchTheme"
         android:label="China Daily &#045; News">
         <activity
             android:name="com.zuiweng.hknews.MainActivity"

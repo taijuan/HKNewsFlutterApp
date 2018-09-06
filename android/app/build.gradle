@@ -39,9 +39,21 @@ android {
         versionName flutterVersionName
     }
 
+    signingConfigs{
+        release{
+            storeFile file("hknews.jks")
+            storePassword "123456"
+            keyAlias "hknews"
+            keyPassword "123456"
+        }
+    }
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
