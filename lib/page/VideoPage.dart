@@ -119,7 +119,7 @@ class _VideoPageState extends State<VideoPage>
   ListView _buildItem() {
     return ListView.builder(
       controller: _scrollController,
-      physics: const AlwaysScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         return VideoItem(data: _data[index]);
       },

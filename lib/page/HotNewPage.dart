@@ -87,7 +87,7 @@ class _HotNewPageState extends State<HotNewPage>
 
   ListView _buildItem() {
     return ListView.builder(
-      physics: const AlwaysScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         if (_hotData.isNotEmpty && index == 0) {
           return _buildHeader();
@@ -108,6 +108,7 @@ class _HotNewPageState extends State<HotNewPage>
         child: Stack(
           children: <Widget>[
             TabBarView(
+              physics: const BouncingScrollPhysics(),
               children: _hotData.map((News value) {
                 return Stack(
                   children: <Widget>[

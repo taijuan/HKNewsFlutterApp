@@ -5,14 +5,14 @@ import 'package:hknews/Welcome.dart';
 import 'package:hknews/localization/HKNewsLocalizationsDelegate.dart';
 
 void main() {
-  return runApp(MaterialApp(
-
+  return runApp(
+    MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         HKNewsLocalizationsDelegate.delegate,
       ],
-      locale: Locale("zh", ""),
+      locale: Locale("en", ""),
       supportedLocales: [
         Locale("zh", ""),
         Locale("en", ""),
@@ -24,5 +24,7 @@ void main() {
         "HomePage": (_) {
           return HomePage();
         }
-      }));
+      },
+    ),
+  );
 }

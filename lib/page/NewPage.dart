@@ -98,7 +98,7 @@ class _NewPageState extends State<NewPage>
   ListView _buildItem() {
     return ListView.builder(
       controller: _scrollController,
-      physics: const AlwaysScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         News _item = _data[index];
         return NewsItem(data:_item);

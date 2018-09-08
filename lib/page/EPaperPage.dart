@@ -73,6 +73,7 @@ class _EPaperPageState extends State<EPaperPage>
           alignment: Alignment.topCenter,
           padding: EdgeInsets.only(top: 200.0),
           child: PageView(
+            physics: const BouncingScrollPhysics(),
             controller: PageController(viewportFraction: 0.7),
             children: _data.map((value) {
               return Stack(
