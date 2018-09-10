@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
 import 'package:hknews/localization/HKNewsLocalizations.dart';
@@ -19,8 +20,6 @@ class VideoPage extends StatefulWidget {
 class _VideoPageState extends State<VideoPage>
     with AutomaticKeepAliveClientMixin<VideoPage> {
   final ScrollController _scrollController = new ScrollController();
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      new GlobalKey<RefreshIndicatorState>();
   List<News> _data = [];
   int _curPage = 0;
 
@@ -32,10 +31,7 @@ class _VideoPageState extends State<VideoPage>
   }
 
   showRefreshLoading() {
-    new Future.delayed(const Duration(seconds: 0), () {
-      _refreshIndicatorKey.currentState.show().then((e) {});
-      return true;
-    });
+    new Future.delayed(const Duration(seconds: 0), handleRefresh);
   }
 
   _getData(int curPage) async {
@@ -108,22 +104,26 @@ class _VideoPageState extends State<VideoPage>
 
   ///刷新与列表
   _buildRefreshIndicator() {
-    return RefreshIndicator(
-      key: _refreshIndicatorKey,
-      child: _buildItem(),
-      onRefresh: handleRefresh,
+    return CustomScrollView(
+      slivers: <Widget>[
+        CupertinoSliverRefreshControl(
+          onRefresh: handleRefresh,
+        ),
+        SliverSafeArea(
+          sliver: _buildItem(),
+        )
+      ],
+      physics: BouncingScrollPhysics(),
+      controller: _scrollController,
     );
   }
 
   ///列表item
-  ListView _buildItem() {
-    return ListView.builder(
-      controller: _scrollController,
-      physics: const BouncingScrollPhysics(),
-      itemBuilder: (context, index) {
+  Widget _buildItem() {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
         return VideoItem(data: _data[index]);
-      },
-      itemCount: _data.length,
+      }, childCount: _data.length),
     );
   }
 
