@@ -40,40 +40,39 @@ class _NewsPageState extends BaseState<NewsPage>
         AutomaticKeepAliveClientMixin<NewsPage>,
         SingleTickerProviderStateMixin<NewsPage> {
   TabController _tabController;
-  List<Widget> _tabViews = [], _tabs = [];
+  final PageController _pageController = PageController();
+  List<Widget> _tabs = [];
 
   @override
   void initState() {
     print("${widget.toString()} initState");
     _tabController = TabController(length: widget.map.length, vsync: this);
-    widget.map.forEach((key, value) {
+    for (int i = 0; i < widget.map.length; i++) {
       _tabs.add(
         Container(
           height: 36.0,
-          child: Center(
-            child: Text(
-              value,
-              textDirection: TextDirection.ltr,
+          child: InkWell(
+            enableFeedback: false,
+            onTap: () {
+              _pageController.jumpToPage(i);
+            },
+            child: Center(
+              child: Text(
+                widget.map.keys.toList()[i],
+                textDirection: TextDirection.ltr,
+              ),
             ),
           ),
         ),
       );
-      if (value == "home") {
-        _tabViews.add(HotNewPage());
-      } else {
-        _tabViews.add(
-          NewPage(
-            name: value,
-          ),
-        );
-      }
-    });
+    }
     super.initState();
   }
 
   @override
   void dispose() {
     _tabController?.dispose();
+    _pageController?.dispose();
     super.dispose();
   }
 
@@ -90,31 +89,28 @@ class _NewsPageState extends BaseState<NewsPage>
         appBar: TabBar(
           controller: _tabController,
           indicatorPadding: EdgeInsets.symmetric(horizontal: 12.0),
-          tabs: widget.map.keys.map((value) {
-            return Container(
-              height: 36.0,
-              child: Center(
-                child: Text(
-                  value,
-                  textDirection: TextDirection.ltr,
-                ),
-              ),
-            );
-          }).toList(),
+          tabs: _tabs,
           isScrollable: true,
           labelColor: HKNewsColors.blue,
           unselectedLabelColor: HKNewsColors.grey,
         ),
-        body: TabBarView(
-          controller: _tabController,
-          children: widget.map.values.map((value) {
+        body: PageView.builder(
+          controller: _pageController,
+          onPageChanged: (index) {
+            _tabController.animateTo(index);
+          },
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+            String value = widget.map.values.toList()[index];
             if (value == "home") {
               return HotNewPage();
+            } else {
+              return NewPage(
+                name: value,
+              );
             }
-            return NewPage(
-              name: value,
-            );
-          }).toList(),
+          },
+          itemCount: widget.map.length,
         ),
       ),
     );
