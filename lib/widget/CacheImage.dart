@@ -2,6 +2,7 @@ library cache_image;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hknews/base/BaseState.dart';
 
 class CacheImage extends StatefulWidget {
   CacheImage.network({
@@ -23,7 +24,7 @@ class CacheImage extends StatefulWidget {
   State<StatefulWidget> createState() => new _CacheImage();
 }
 
-class _CacheImage extends State<CacheImage> {
+class _CacheImage extends BaseState<CacheImage> {
   @override
   Widget build(BuildContext context) {
     return widget.aspectRatio == null

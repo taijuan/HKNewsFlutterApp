@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 
 class TitleAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Widget title;
@@ -25,7 +26,7 @@ class TitleAppBar extends StatefulWidget implements PreferredSizeWidget {
   }
 }
 
-class _TitleAppBarState extends State<TitleAppBar> {
+class _TitleAppBarState extends BaseState<TitleAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(

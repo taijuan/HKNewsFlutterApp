@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/Api.dart';
 import 'package:hknews/model/BaseData.dart';
 import 'package:hknews/model/EPaper.dart';
@@ -14,7 +15,7 @@ class EPaperPage extends StatefulWidget {
   }
 }
 
-class _EPaperPageState extends State<EPaperPage>
+class _EPaperPageState extends BaseState<EPaperPage>
     with AutomaticKeepAliveClientMixin<EPaperPage> {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();

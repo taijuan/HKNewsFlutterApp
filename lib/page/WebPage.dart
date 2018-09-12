@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/localization/HKNewsLocalizations.dart';
 import 'package:hknews/widget/TitleAppBar.dart';
 import 'package:hknews/widget/WebView.dart';
@@ -15,7 +16,7 @@ class WebPage extends StatefulWidget {
   }
 }
 
-class _EPaperDetailState extends State<WebPage> {
+class _EPaperDetailState extends BaseState<WebPage> {
   @override
   Widget build(BuildContext context) {
     return WebView(

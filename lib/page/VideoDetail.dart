@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/Api.dart';
 import 'package:hknews/model/BaseData.dart';
 import 'package:hknews/model/News.dart';
@@ -19,7 +20,7 @@ class VideoDetail extends StatefulWidget {
   }
 }
 
-class _VideoDetailState extends State<VideoDetail> {
+class _VideoDetailState extends BaseState<VideoDetail> {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
   final List<News> _data = [];

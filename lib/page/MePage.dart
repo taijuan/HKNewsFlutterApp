@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/localization/HKNewsLocalizations.dart';
 import 'package:hknews/page/WebPage.dart';
 import 'package:hknews/widget/TitleAppBar.dart';
@@ -12,7 +13,7 @@ class MePage extends StatefulWidget {
   }
 }
 
-class _MePageState extends State<MePage>
+class _MePageState extends BaseState<MePage>
     with AutomaticKeepAliveClientMixin<MePage> {
   @override
   Widget build(BuildContext context) {

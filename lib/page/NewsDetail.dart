@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/widget/WebView.dart';
 
 class NewsDetail extends StatefulWidget {
@@ -12,7 +13,7 @@ class NewsDetail extends StatefulWidget {
   }
 }
 
-class _NewsDetailState extends State<NewsDetail> {
+class _NewsDetailState extends BaseState<NewsDetail> {
   @override
   void initState() {
     print(widget.url);

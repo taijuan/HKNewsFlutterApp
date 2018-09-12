@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/News.dart';
 import 'package:hknews/page/VideoDetail.dart';
 import 'package:hknews/widget/CacheImage.dart';
@@ -16,7 +17,7 @@ class VideoItem extends StatefulWidget {
   }
 }
 
-class _VideoItemState extends State<VideoItem> {
+class _VideoItemState extends BaseState<VideoItem> {
   @override
   Widget build(BuildContext context) {
     return Card(

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:hknews/base/BaseState.dart';
 
 class WebView extends StatefulWidget {
   final PreferredSizeWidget appBar;
@@ -42,7 +43,7 @@ class WebView extends StatefulWidget {
   _WebViewScaffoldState createState() => new _WebViewScaffoldState();
 }
 
-class _WebViewScaffoldState extends State<WebView> {
+class _WebViewScaffoldState extends BaseState<WebView> {
   final webViewReference = new FlutterWebviewPlugin();
   Rect _rect;
   Timer _resizeTimer;

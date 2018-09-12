@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/localization/HKNewsLocalizations.dart';
 import 'package:hknews/model/Api.dart';
 import 'package:hknews/model/BaseData.dart';
@@ -17,7 +18,7 @@ class VideoPage extends StatefulWidget {
   }
 }
 
-class _VideoPageState extends State<VideoPage>
+class _VideoPageState extends BaseState<VideoPage>
     with AutomaticKeepAliveClientMixin<VideoPage> {
   final ScrollController _scrollController = new ScrollController();
   List<News> _data = [];

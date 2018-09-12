@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/Api.dart';
 import 'package:hknews/model/EPaper.dart';
 import 'package:hknews/widget/CacheImage.dart';
@@ -15,7 +16,7 @@ class EPaperItem extends StatefulWidget {
   }
 }
 
-class _EPaperItemState extends State<EPaperItem> {
+class _EPaperItemState extends BaseState<EPaperItem> {
   _getData() async {
     String a = await getEPaperImageUrl(
         widget.data.publicationCode, widget.data.pubDate);

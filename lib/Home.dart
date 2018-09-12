@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/localization/HKNewsLocalizations.dart';
 import 'package:hknews/page/EPaperPage.dart';
 import 'package:hknews/page/MePage.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
   }
 }
 
-class _HomePageState extends State<HomePage>
+class _HomePageState extends BaseState<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
   int _index = 0;
 

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/Api.dart';
 import 'package:hknews/model/BaseData.dart';
 import 'package:hknews/model/News.dart';
@@ -17,7 +18,7 @@ class HotNewPage extends StatefulWidget {
   }
 }
 
-class _HotNewPageState extends State<HotNewPage>
+class _HotNewPageState extends BaseState<HotNewPage>
     with AutomaticKeepAliveClientMixin<HotNewPage> {
   final List<News> _data = [];
   final List<News> _hotData = [];
@@ -69,7 +70,7 @@ class _HotNewPageState extends State<HotNewPage>
   @override
   void didChangeDependencies() {
     print("${widget.toString()} didChangeDependencies");
-    if (_data.isEmpty) {
+    if (_data.isEmpty && mounted) {
       showRefreshLoading();
     }
     super.didChangeDependencies();

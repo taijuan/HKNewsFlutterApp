@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/Api.dart';
 import 'package:hknews/model/BaseData.dart';
 import 'package:hknews/model/News.dart';
@@ -18,7 +19,7 @@ class NewPage extends StatefulWidget {
   }
 }
 
-class _NewPageState extends State<NewPage>
+class _NewPageState extends BaseState<NewPage>
     with AutomaticKeepAliveClientMixin<NewPage> {
   final ScrollController _scrollController = new ScrollController();
   final List<News> _data = [];

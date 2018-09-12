@@ -36,9 +36,8 @@ class _HeaderVideoTitleBarState extends State<HeaderVideoTitleBar> {
     _controller.addListener(() {
       final bool isPlaying = _controller.value.isPlaying;
       if (isPlaying != _isPlaying) {
-        setState(() {
-          _isPlaying = isPlaying;
-        });
+        _isPlaying = isPlaying;
+        setState(() {});
       }
     });
     _controller.initialize().then((_) {

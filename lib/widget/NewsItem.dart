@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hknews/HKNewsColors.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/News.dart';
 import 'package:hknews/page/NewsDetail.dart';
 import 'package:hknews/widget/CacheImage.dart';
@@ -15,7 +16,7 @@ class NewsItem extends StatefulWidget {
   }
 }
 
-class _NewsItemState extends State<NewsItem> {
+class _NewsItemState extends BaseState<NewsItem> {
   @override
   Widget build(BuildContext context) {
     News _item = widget.data;
