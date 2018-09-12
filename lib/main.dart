@@ -7,6 +7,7 @@ import 'package:hknews/localization/HKNewsLocalizationsDelegate.dart';
 void main() {
   return runApp(
     MaterialApp(
+      theme: ThemeData(platform: TargetPlatform.iOS),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

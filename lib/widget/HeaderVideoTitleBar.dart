@@ -73,35 +73,29 @@ class _HeaderVideoTitleBarState extends State<HeaderVideoTitleBar> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        _controller?.pause();
-        Navigator.pop(context);
-      },
-      child: AspectRatio(
-        aspectRatio: 16 / 9,
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: <Widget>[
-            isPlayerInit() ? VideoPlayer(_controller) : Container(),
-            isPlayerInit()
-                ? VideoProgressIndicator(
-                    _controller,
-                    allowScrubbing: true,
-                  )
-                : Container(),
-            isPlayerInit()
-                ? FlatButton(
-                    onPressed: onPressed,
-                    child: Container(),
-                  )
-                : CacheImage.network(
-                    aspectRatio: 16 / 9,
-                    path: widget.data.image,
-                    placeholder: "images/placeholder.webp",
-                  ),
-          ],
-        ),
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          isPlayerInit() ? VideoPlayer(_controller) : Container(),
+          isPlayerInit()
+              ? VideoProgressIndicator(
+                  _controller,
+                  allowScrubbing: true,
+                )
+              : Container(),
+          isPlayerInit()
+              ? FlatButton(
+                  onPressed: onPressed,
+                  child: Container(),
+                )
+              : CacheImage.network(
+                  aspectRatio: 16 / 9,
+                  path: widget.data.image,
+                  placeholder: "images/placeholder.webp",
+                ),
+        ],
       ),
     );
   }

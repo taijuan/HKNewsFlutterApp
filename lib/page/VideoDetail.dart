@@ -63,6 +63,7 @@ class _VideoDetailState extends State<VideoDetail> {
     return RefreshIndicator(
       key: _refreshIndicatorKey,
       child: ListView.builder(
+        physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           if (index == 0) {
             return _introCard();
