@@ -16,13 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends BaseState<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
-  final PageController _pageController = PageController();
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
+  int _index = 0;
 
   @override
   void initState() {
@@ -34,27 +28,21 @@ class _HomePageState extends BaseState<HomePage>
   Widget build(BuildContext context) {
     print("${widget.toString()} build");
     return Scaffold(
-      body: PageView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: 5,
-        controller: _pageController,
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return NewsPage(map: NEWS);
-          } else if (index == 1) {
-            return NewsPage(map: FOCUS);
-          } else if (index == 2) {
-            return EPaperPage();
-          } else if (index == 3) {
-            return VideoPage();
-          } else {
-            return MePage();
-          }
-        },
+      body: IndexedStack(
+        index: _index,
+        children: [
+          NewsPage(map: NEWS),
+          NewsPage(map: FOCUS),
+          EPaperPage(),
+          VideoPage(),
+          MePage(),
+        ],
       ),
       bottomNavigationBar: HomeBar(
+        curIndex: _index,
         onTap: (index) {
-          _pageController.jumpToPage(index);
+          _index = index;
+          setState(() {});
         },
       ),
     );

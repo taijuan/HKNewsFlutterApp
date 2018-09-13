@@ -4,6 +4,7 @@ import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/News.dart';
 import 'package:hknews/page/VideoDetail.dart';
 import 'package:hknews/widget/CacheImage.dart';
+import 'package:hknews/widget/NewsLikesItem.dart';
 
 class VideoItem extends StatefulWidget {
   final News data;
@@ -41,10 +42,16 @@ class _VideoItemState extends BaseState<VideoItem> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CacheImage.network(
-              aspectRatio: 16 / 9,
-              path: widget.data.image,
-              placeholder: "images/placeholder.webp",
+            Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                CacheImage.network(
+                  aspectRatio: 16 / 9,
+                  path: widget.data.image,
+                  placeholder: "images/placeholder.webp",
+                ),
+                Image.asset("images/video_play.webp")
+              ],
             ),
             Container(
               padding: EdgeInsets.all(16.0),
@@ -60,12 +67,26 @@ class _VideoItemState extends BaseState<VideoItem> {
             ),
             Container(
               padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
-              child: Text(
-                widget.data.subjectName,
-                style: TextStyle(
-                  color: HKNewsColors.text_grey,
-                  fontSize: 14.0,
-                ),
+              child: Row(
+                children: [
+                  Text(
+                    widget.data.subjectName,
+                    style: TextStyle(
+                      color: HKNewsColors.text_grey,
+                      fontSize: 14.0,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 8.0, bottom: 4.0),
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset("images/likes.webp"),
+                  ),
+                  Expanded(
+                    child: NewsLikesItem(
+                      data: widget.data,
+                    ),
+                  )
+                ],
               ),
             ),
           ],

@@ -99,7 +99,7 @@ class _HeaderVideoTitleBarState extends State<HeaderVideoTitleBar> {
     );
   }
 
-  Future<Null> onPressed() {
+  Future<void> onPressed() {
     if (isPlayerInit()) {
       return _controller.value.isPlaying
           ? _controller.pause()

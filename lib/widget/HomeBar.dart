@@ -6,8 +6,9 @@ import 'package:hknews/localization/HKNewsLocalizations.dart';
 
 class HomeBar extends StatefulWidget {
   final ValueChanged<int> onTap;
+  final curIndex;
 
-  const HomeBar({Key key, this.onTap}) : super(key: key);
+  const HomeBar({Key key, this.onTap, this.curIndex = 0}) : super(key: key);
 
   @override
   _HomeBarState createState() => _HomeBarState();

@@ -52,7 +52,6 @@ class _NewsPageState extends BaseState<NewsPage>
         Container(
           height: 36.0,
           child: InkWell(
-            enableFeedback: false,
             onTap: () {
               _pageController.jumpToPage(i);
             },

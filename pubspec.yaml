@@ -59,6 +59,8 @@ flutter:
       - images/epaper_background.webp
       - images/epaper_textimg.webp
       - images/epaper_pic.webp
+      - images/likes.webp
+      - images/video_play.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

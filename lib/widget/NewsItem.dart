@@ -4,6 +4,7 @@ import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/News.dart';
 import 'package:hknews/page/NewsDetail.dart';
 import 'package:hknews/widget/CacheImage.dart';
+import 'package:hknews/widget/NewsLikesItem.dart';
 
 class NewsItem extends StatefulWidget {
   final News data;
@@ -69,12 +70,21 @@ class _NewsItemState extends BaseState<NewsItem> {
             ),
             Container(
               padding: EdgeInsets.all(16.0),
-              child: Text(
-                _item.publishTime.toUpperCase(),
-                style: TextStyle(
-                  color: HKNewsColors.text_blue,
-                  fontSize: 9.0,
-                ),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    _item.publishTime.toUpperCase(),
+                    style: TextStyle(
+                      color: HKNewsColors.text_blue,
+                      fontSize: 9.0,
+                    ),
+                  ),
+                  Expanded(
+                    child: NewsLikesItem(
+                      data: widget.data,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

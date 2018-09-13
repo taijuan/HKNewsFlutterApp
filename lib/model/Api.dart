@@ -120,8 +120,7 @@ getEPaperImageUrl(String publicationCode, String pubDate) async {
   BaseRes res = await HttpManager.get(
       url: "${E_PAPER_URL}pubs/$publicationCode/$pubDate/issue.json");
   if (Code.isSuccessful(res.resCode)) {
-    return "${E_PAPER_URL}pubs${res
-        .resObject[0]["snapshotBigUrl"]}";
+    return "${E_PAPER_URL}pubs${res.resObject[0]["snapshotBigUrl"]}";
   }
   return "";
 }
@@ -133,4 +132,14 @@ getVideoDetail(String dataId) async {
     return News.fromJson(res.resObject)?.txyUrl ?? "";
   }
   return "";
+}
+
+getLikes(String dataId) async {
+  BaseRes res =
+      await HttpManager.get(url: "${STATIC_URL}searchLike?newsId=$dataId");
+  logRes("getLikes", res);
+  if (Code.isSuccessful(res.resCode)) {
+    return res.resObject["count"] ?? 0;
+  }
+  return 0;
 }
