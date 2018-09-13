@@ -6,7 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/flutter_webview_plugin-0.2.1+2/android/flutter_webview_plugin.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/flutter_webview_plugin-0.2.1+2/android/flutter_webview_plugin.iml" />
       <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/fluttertoast-2.0.7/android/fluttertoast.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/fluttertoast-2.0.7/android/fluttertoast.iml" />
-      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/video_player-0.6.4/android/video_player.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/video_player-0.6.4/android/video_player.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/video_player-0.6.5/android/video_player.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/video_player-0.6.5/android/video_player.iml" />
     </modules>
   </component>
 </project>
