@@ -1,5 +1,6 @@
 library cache_image;
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hknews/base/BaseState.dart';
@@ -28,17 +29,17 @@ class _CacheImage extends BaseState<CacheImage> {
   @override
   Widget build(BuildContext context) {
     return widget.aspectRatio == null
-        ? FadeInImage.assetNetwork(
+        ? CachedNetworkImage(
             fit: BoxFit.cover,
-            placeholder: widget.placeholder,
-            image: widget.path,
+            placeholder: Image.asset(widget.placeholder),
+            imageUrl: widget.path,
             width: widget.width,
             height: widget.height)
         : AspectRatio(
             aspectRatio: widget.aspectRatio,
-            child: FadeInImage.assetNetwork(
-              placeholder: widget.placeholder,
-              image: widget.path,
+            child: CachedNetworkImage(
+              placeholder: Image.asset(widget.placeholder),
+              imageUrl: widget.path,
               fit: BoxFit.cover,
             ),
           );
