@@ -29,9 +29,9 @@ class _EPaperPageState extends BaseState<EPaperPage>
   Future _getData() async {
     BaseData<List<EPaper>, Null> data = await getEPaperData();
     if (data.isSuccess && data.a.isNotEmpty) {
+      _data.clear();
+      _data.addAll(data.a);
       setState(() {
-        _data.clear();
-        _data.addAll(data.a);
         print("${widget.toString()}    ${_data.length.toString()}");
       });
     }
@@ -55,46 +55,48 @@ class _EPaperPageState extends BaseState<EPaperPage>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Image.asset(
-          "images/epaper_background.webp",
-          fit: BoxFit.fill,
-          height: 260.0,
-        ),
-        Container(
-          height: 260.0,
-          padding: EdgeInsets.only(left: 36.0, right: 36.0, bottom: 24.0),
-          alignment: Alignment.center,
-          child: Image.asset(
-            "images/epaper_textimg.webp",
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          Image.asset(
+            "images/epaper_background.webp",
+            fit: BoxFit.fill,
+            height: 260.0,
           ),
-        ),
-        Container(
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 200.0),
-          child: PageView(
-            physics: const BouncingScrollPhysics(),
-            controller: PageController(viewportFraction: 0.7),
-            children: _data.map((value) {
-              return Stack(
-                children: <Widget>[
-                  EPaperItem(data: value),
-                  FlatButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return WebPage(url: value.ePaperUrl);
-                      }));
-                    },
-                    child: Container(),
-                  ),
-                ],
-              );
-            }).toList(),
+          Container(
+            height: 260.0,
+            padding: EdgeInsets.only(left: 36.0, right: 36.0, bottom: 24.0),
+            alignment: Alignment.center,
+            child: Image.asset(
+              "images/epaper_textimg.webp",
+            ),
           ),
-        )
-      ],
+          Container(
+            alignment: Alignment.topCenter,
+            padding: EdgeInsets.only(top: 200.0),
+            child: PageView(
+              physics: const BouncingScrollPhysics(),
+              controller: PageController(viewportFraction: 0.7),
+              children: _data.map((value) {
+                return Stack(
+                  children: <Widget>[
+                    EPaperItem(data: value),
+                    FlatButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return WebPage(url: value.ePaperUrl);
+                        }));
+                      },
+                      child: Container(),
+                    ),
+                  ],
+                );
+              }).toList(),
+            ),
+          )
+        ],
+      ),
     );
   }
 
