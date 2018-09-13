@@ -18,6 +18,7 @@ class _MePageState extends BaseState<MePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HKNewsColors.f5f5f5,
       appBar: TitleAppBar(
         context: context,
         title: Text(
@@ -25,8 +26,8 @@ class _MePageState extends BaseState<MePage>
           style: TextStyle(fontSize: 21.0, color: HKNewsColors.text_white),
         ),
       ),
-      body: Column(
-        children: <Widget>[
+      body: ListView(
+        children: [
           _buildItem(
             "images/favorite.webp",
             HKNewsLocalizations.of(context).favorite,
@@ -37,7 +38,6 @@ class _MePageState extends BaseState<MePage>
           ),
           Container(
             height: 8.0,
-            color: HKNewsColors.f5f5f5,
           ),
           _buildItem(
             "images/facebook.webp",
@@ -56,7 +56,6 @@ class _MePageState extends BaseState<MePage>
           ),
           Container(
             height: 2.0,
-            color: HKNewsColors.f5f5f5,
           ),
           _buildItem(
             "images/twitter.webp",
@@ -66,8 +65,7 @@ class _MePageState extends BaseState<MePage>
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return WebPage(
-                        url: "https://twitter.com/chinadailyasia");
+                    return WebPage(url: "https://twitter.com/chinadailyasia");
                   },
                 ),
               );
@@ -75,7 +73,6 @@ class _MePageState extends BaseState<MePage>
           ),
           Container(
             height: 8.0,
-            color: HKNewsColors.f5f5f5,
           ),
           _buildItem(
             "images/feedback.webp",
@@ -87,7 +84,6 @@ class _MePageState extends BaseState<MePage>
           ),
           Container(
             height: 2.0,
-            color: HKNewsColors.f5f5f5,
           ),
           _buildItem(
             "images/settings.webp",
@@ -96,14 +92,7 @@ class _MePageState extends BaseState<MePage>
               Fluttertoast.showToast(
                   msg: HKNewsLocalizations.of(context).settings);
             },
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              height: 2.0,
-              color: HKNewsColors.f5f5f5,
-            ),
-          ),
+          )
         ],
       ),
     );
@@ -111,6 +100,7 @@ class _MePageState extends BaseState<MePage>
 
   _buildItem(String icon, String data, onPressed) {
     return FlatButton(
+      color: HKNewsColors.text_white,
       padding: EdgeInsets.only(),
       onPressed: onPressed,
       child: Container(
