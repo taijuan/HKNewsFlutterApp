@@ -38,13 +38,15 @@ class _VideoPageState extends BaseState<VideoPage>
   _getData(int curPage) async {
     _curPage = curPage;
     BaseData<List<News>, Null> data = await getVideoData(curPage);
-    setState(() {
-      print("${widget.toString()} setState");
+    if (data.a.isNotEmpty) {
       if (curPage == 1) {
         _data.clear();
       }
       _data.addAll(data.a);
-    });
+      setState(() {
+        print("${widget.toString()} setState");
+      });
+    }
     return null;
   }
 

@@ -28,12 +28,10 @@ class _EPaperPageState extends BaseState<EPaperPage>
 
   Future _getData() async {
     BaseData<List<EPaper>, Null> data = await getEPaperData();
+    _data.clear();
+    _data.addAll(data.a);
     if (data.isSuccess && data.a.isNotEmpty) {
-      _data.clear();
-      _data.addAll(data.a);
-      setState(() {
-        print("${widget.toString()}    ${_data.length.toString()}");
-      });
+      setState(() {});
     }
   }
 

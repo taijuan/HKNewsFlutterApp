@@ -51,12 +51,11 @@ class _NewPageState extends BaseState<NewPage>
     _curPage = curPage;
     BaseData<List<News>, Null> data = await getNewsData(widget.name, curPage);
     print("${widget.name} setState");
-    setState(() {
-      if (curPage == 1) {
-        _data.clear();
-      }
-      _data.addAll(data.a);
-    });
+    if (curPage == 1) {
+      _data.clear();
+    }
+    _data.addAll(data.a);
+    setState(() {});
     return null;
   }
 
@@ -102,7 +101,7 @@ class _NewPageState extends BaseState<NewPage>
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         News _item = _data[index];
-        return NewsItem(data:_item);
+        return NewsItem(data: _item);
       },
       itemCount: _data.length,
     );
