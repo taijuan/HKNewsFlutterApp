@@ -31,7 +31,6 @@ class _NewPageState extends BaseState<NewPage>
   void initState() {
     print("${widget.name} initState");
     _scrollController.addListener(() {
-      ///判断当前滑动位置是不是到达底部，触发加载更多回调
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         _getData(_curPage + 1);
@@ -98,10 +97,8 @@ class _NewPageState extends BaseState<NewPage>
   ListView _buildItem() {
     return ListView.builder(
       controller: _scrollController,
-      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        News _item = _data[index];
-        return NewsItem(data: _item);
+        return NewsItem(data: _data[index]);
       },
       itemCount: _data.length,
     );

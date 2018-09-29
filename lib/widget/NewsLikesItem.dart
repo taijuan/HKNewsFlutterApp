@@ -45,7 +45,7 @@ class _NewsLikesItemState extends BaseState<NewsLikesItem> {
       padding: EdgeInsets.only(left: 8.0),
       alignment: Alignment.centerLeft,
       child: Text(
-        likes,
+        likes ?? "",
         textAlign: TextAlign.start,
         style: TextStyle(color: HKNewsColors.text_grey, fontSize: 11.0),
       ),

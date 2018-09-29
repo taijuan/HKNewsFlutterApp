@@ -36,16 +36,11 @@ class _NewsItemState extends BaseState<NewsItem> {
           }));
         },
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AspectRatio(
+            CacheImage.network(
               aspectRatio: 16 / 9,
-              child: CacheImage.network(
-                aspectRatio: 16 / 9,
-                path: _item.image,
-                placeholder: "images/placeholder.webp",
-              ),
+              path: _item.image,
+              placeholder: "images/placeholder.webp",
             ),
             Container(
               padding: EdgeInsets.all(16.0),

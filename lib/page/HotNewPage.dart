@@ -88,7 +88,6 @@ class _HotNewPageState extends BaseState<HotNewPage>
 
   ListView _buildItem() {
     return ListView.builder(
-      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         if (_hotData.isNotEmpty && index == 0) {
           return _buildHeader();

@@ -56,7 +56,6 @@ class _VideoPageState extends BaseState<VideoPage>
   }
 
   Future<Null> handleLoadMore() async {
-    ///判断当前滑动位置是不是到达底部，触发加载更多回调
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
       await _getData(_curPage + 1);
@@ -94,7 +93,6 @@ class _VideoPageState extends BaseState<VideoPage>
     );
   }
 
-  ///标题
   _buildTitle(BuildContext context) {
     return TitleAppBar(
       context: context,
@@ -105,7 +103,6 @@ class _VideoPageState extends BaseState<VideoPage>
     );
   }
 
-  ///刷新与列表
   _buildRefreshIndicator() {
     return CustomScrollView(
       slivers: <Widget>[
@@ -116,12 +113,10 @@ class _VideoPageState extends BaseState<VideoPage>
           sliver: _buildItem(),
         )
       ],
-      physics: BouncingScrollPhysics(),
       controller: _scrollController,
     );
   }
 
-  ///列表item
   Widget _buildItem() {
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {

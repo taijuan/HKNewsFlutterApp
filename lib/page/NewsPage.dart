@@ -36,43 +36,11 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends BaseState<NewsPage>
-    with
-        AutomaticKeepAliveClientMixin<NewsPage>,
-        SingleTickerProviderStateMixin<NewsPage> {
-  TabController _tabController;
-  final PageController _pageController = PageController();
-  List<Widget> _tabs = [];
-
+    with AutomaticKeepAliveClientMixin<NewsPage> {
   @override
   void initState() {
     print("${widget.toString()} initState");
-    _tabController = TabController(length: widget.map.length, vsync: this);
-    for (int i = 0; i < widget.map.length; i++) {
-      _tabs.add(
-        Container(
-          height: 36.0,
-          child: InkWell(
-            onTap: () {
-              _pageController.jumpToPage(i);
-            },
-            child: Center(
-              child: Text(
-                widget.map.keys.toList()[i],
-                textDirection: TextDirection.ltr,
-              ),
-            ),
-          ),
-        ),
-      );
-    }
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _tabController?.dispose();
-    _pageController?.dispose();
-    super.dispose();
   }
 
   @override
@@ -84,32 +52,29 @@ class _NewsPageState extends BaseState<NewsPage>
           "images/top_logo.webp",
         ),
       ),
-      body: Scaffold(
-        appBar: TabBar(
-          controller: _tabController,
-          indicatorPadding: EdgeInsets.symmetric(horizontal: 12.0),
-          tabs: _tabs,
-          isScrollable: true,
-          labelColor: HKNewsColors.blue,
-          unselectedLabelColor: HKNewsColors.grey,
-        ),
-        body: PageView.builder(
-          controller: _pageController,
-          onPageChanged: (index) {
-            _tabController.animateTo(index);
-          },
-          physics: BouncingScrollPhysics(),
-          itemBuilder: (context, index) {
-            String value = widget.map.values.toList()[index];
-            if (value == "home") {
-              return HotNewPage();
-            } else {
-              return NewPage(
-                name: value,
-              );
-            }
-          },
-          itemCount: widget.map.length,
+      body: DefaultTabController(
+        length: widget.map.length,
+        child: Scaffold(
+          appBar: TabBar(
+            tabs: widget.map.keys.map((name) {
+              return Text(name);
+            }).toList(),
+            isScrollable: true,
+            labelColor: HKNewsColors.blue,
+            unselectedLabelColor: HKNewsColors.grey,
+            labelPadding: EdgeInsets.all(8.0),
+          ),
+          body: TabBarView(
+            children: widget.map.values.map((value) {
+              if (value == "home") {
+                return HotNewPage();
+              } else {
+                return NewPage(
+                  name: value,
+                );
+              }
+            }).toList(),
+          ),
         ),
       ),
     );
