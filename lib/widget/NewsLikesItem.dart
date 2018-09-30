@@ -34,7 +34,7 @@ class _NewsLikesItemState extends BaseState<NewsLikesItem> {
   @override
   void didChangeDependencies() {
     if (likes == null) {
-//      refresh();
+      refresh();
     }
     super.didChangeDependencies();
   }
