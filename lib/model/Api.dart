@@ -12,7 +12,7 @@ const SERVICE_URL = "https://www.chinadailyhk.com";
 const STATIC_URL = "https://api.cdeclips.com/hknews-api/";
 const E_PAPER_URL = "https://epaperlib.chinadailyhk.com/";
 
-getNewsData(String name, int curPage) async {
+Future<BaseData<List<News>, Null>> getNewsData(String name, int curPage) async {
   var url =
       "${STATIC_URL}selectNewsList?subjectCode=$name&currentPage=$curPage&dataType=1";
   BaseRes res = await HttpManager.get(url: url);
@@ -57,7 +57,7 @@ void logRes(String name, BaseRes res) {
   print("$name =============== $name");
 }
 
-getVideoData(int curPage) async {
+Future<BaseData<List<News>, Null>> getVideoData(int curPage) async {
   var url = STATIC_URL + "selectNewsList?currentPage=$curPage&dataType=3";
   BaseRes res = await HttpManager.get(url: url);
   logRes("video", res);
@@ -93,7 +93,7 @@ getVideoData(int curPage) async {
   return data;
 }
 
-getLastVideo(String subjectCode) async {
+Future<BaseData<List<News>, Null>> getLastVideo(String subjectCode) async {
   var url = STATIC_URL +
       "selectNewsList?subjectCode=$subjectCode&currentPage=1&dataType=3";
   BaseRes res = await HttpManager.get(url: url);
@@ -112,7 +112,7 @@ getLastVideo(String subjectCode) async {
   return data;
 }
 
-getHotNewsData() async {
+Future<BaseData<List<News>, List<News>>> getHotNewsData() async {
   var url = STATIC_URL + "homeDataNewsList";
   BaseRes res = await HttpManager.get(url: url);
   logRes("home", res);
@@ -143,7 +143,7 @@ getHotNewsData() async {
       isSuccess: isSuccess, isCache: !isSuccess, a: a, b: b);
 }
 
-getEPaperData() async {
+Future<BaseData<List<EPaper>, Null>> getEPaperData() async {
   BaseRes res = await HttpManager.get(url: "${E_PAPER_URL}pubs/config.json");
   logRes("epaper", res);
   bool isSuccess = Code.isSuccessful(res.resCode);
@@ -166,7 +166,7 @@ getEPaperData() async {
       isSuccess: a.isNotEmpty, isCache: !isSuccess, a: a);
 }
 
-getEPaperImageUrl(String publicationCode, String pubDate) async {
+Future<String> getEPaperImageUrl(String publicationCode, String pubDate) async {
   String url = "${E_PAPER_URL}pubs/$publicationCode/$pubDate/issue.json";
   BaseRes res = await HttpManager.get(url: url);
   if (Code.isSuccessful(res.resCode)) {
@@ -178,7 +178,7 @@ getEPaperImageUrl(String publicationCode, String pubDate) async {
   return _instance.getString(url) ?? "";
 }
 
-getVideoDetail(String dataId) async {
+Future<String> getVideoDetail(String dataId) async {
   BaseRes res =
       await HttpManager.get(url: "${STATIC_URL}selecNewsDetail?dataId=$dataId");
   if (Code.isSuccessful(res.resCode)) {
@@ -187,7 +187,7 @@ getVideoDetail(String dataId) async {
   return "";
 }
 
-getLikes(String dataId) async {
+Future<int> getLikes(String dataId) async {
   BaseRes res =
       await HttpManager.get(url: "${STATIC_URL}searchLike?newsId=$dataId");
   logRes("getLikes", res);

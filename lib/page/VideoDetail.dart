@@ -27,10 +27,9 @@ class _VideoDetailState extends BaseState<VideoDetail> {
 
   Future<Null> _getData() async {
     BaseData data = await getLastVideo(widget.data.subjectCode);
-    setState(() {
-      _data.clear();
-      _data.addAll(data.a);
-    });
+    _data.clear();
+    _data.addAll(data.a);
+    setState(() {});
     return null;
   }
 

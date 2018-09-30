@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/model/Api.dart';
 import 'package:hknews/model/News.dart';
 import 'package:hknews/widget/CacheImage.dart';
@@ -26,30 +25,34 @@ class HeaderVideoTitleBar extends StatefulWidget
   }
 }
 
-class _HeaderVideoTitleBarState extends State<HeaderVideoTitleBar> {
+class _HeaderVideoTitleBarState extends BaseState<HeaderVideoTitleBar> {
   VideoPlayerController _controller;
   bool _isPlaying = false;
 
   initPlayer(String url) {
     _controller = VideoPlayerController.network(url);
-    _controller.setLooping(true);
-    _controller.addListener(() {
-      final bool isPlaying = _controller.value.isPlaying;
-      if (isPlaying != _isPlaying) {
-        _isPlaying = isPlaying;
+    _controller
+      ..setLooping(true)
+      ..setVolume(1.0)
+      ..play()
+      ..addListener(() {
+        final bool isPlaying = _controller.value.isPlaying;
+        if (isPlaying != _isPlaying) {
+          _isPlaying = isPlaying;
+          setState(() {});
+        }
+      })
+      ..initialize().then((_) {
         setState(() {});
-      }
-    });
-    _controller.initialize().then((_) {
-      setState(() {});
-    });
+      });
   }
 
-  _getData() async {
-    String url = await getVideoDetail(widget.data.dataId);
-    if (url.isNotEmpty) {
-      initPlayer(url);
-    }
+  _getData() {
+    getVideoDetail(widget.data.dataId).then((url) {
+      if (url.isNotEmpty && mounted) {
+        initPlayer(url);
+      }
+    }).catchError((e) {});
   }
 
   @override
@@ -99,13 +102,9 @@ class _HeaderVideoTitleBarState extends State<HeaderVideoTitleBar> {
     );
   }
 
-  Future<void> onPressed() {
+  onPressed() {
     if (isPlayerInit()) {
-      return _controller.value.isPlaying
-          ? _controller.pause()
-          : _controller.play();
-    } else {
-      return null;
+      _controller.value.isPlaying ? _controller.pause() : _controller.play();
     }
   }
 }
