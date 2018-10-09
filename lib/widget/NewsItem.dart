@@ -44,6 +44,7 @@ class _NewsItemState extends BaseState<NewsItem> {
             ),
             Container(
               padding: EdgeInsets.all(16.0),
+              alignment: Alignment.centerLeft,
               child: Text(
                 _item.title,
                 style: TextStyle(
@@ -54,6 +55,7 @@ class _NewsItemState extends BaseState<NewsItem> {
               ),
             ),
             Container(
+              alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(left: 16.0, right: 16.0),
               child: Text(
                 _item.description,
@@ -64,6 +66,7 @@ class _NewsItemState extends BaseState<NewsItem> {
               ),
             ),
             Container(
+              alignment: Alignment.centerLeft,
               padding: EdgeInsets.all(16.0),
               child: Row(
                 children: <Widget>[

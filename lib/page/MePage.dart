@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hknews/HKNewsColors.dart';
 import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/localization/HKNewsLocalizations.dart';
@@ -26,76 +25,83 @@ class _MePageState extends BaseState<MePage>
           style: TextStyle(fontSize: 21.0, color: HKNewsColors.text_white),
         ),
       ),
-      body: ListView(
-        children: [
-          _buildItem(
-            "images/favorite.webp",
-            HKNewsLocalizations.of(context).favorite,
-            () {
-              Fluttertoast.showToast(
-                  msg: HKNewsLocalizations.of(context).favorite);
-            },
-          ),
-          Container(
-            height: 8.0,
-          ),
-          _buildItem(
-            "images/facebook.webp",
-            HKNewsLocalizations.of(context).facebook,
-            () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return WebPage(
-                        url: "https://www.facebook.com/chinadailyhkedition/");
-                  },
-                ),
-              );
-            },
-          ),
-          Container(
-            height: 2.0,
-          ),
-          _buildItem(
-            "images/twitter.webp",
-            HKNewsLocalizations.of(context).twitter,
-            () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return WebPage(url: "https://twitter.com/chinadailyasia");
-                  },
-                ),
-              );
-            },
-          ),
-          Container(
-            height: 8.0,
-          ),
-          _buildItem(
-            "images/feedback.webp",
-            HKNewsLocalizations.of(context).feedback,
-            () {
-              Fluttertoast.showToast(
-                  msg: HKNewsLocalizations.of(context).feedback);
-            },
-          ),
-          Container(
-            height: 2.0,
-          ),
-          _buildItem(
-            "images/settings.webp",
-            HKNewsLocalizations.of(context).settings,
-            () {
-              Fluttertoast.showToast(
-                  msg: HKNewsLocalizations.of(context).settings);
-            },
-          )
-        ],
+      body: Builder(
+        builder: (context) {
+          return ListView(
+            children: [
+              _buildItem(
+                "images/favorite.webp",
+                HKNewsLocalizations.of(context).favorite,
+                () {
+                  showToast(context, HKNewsLocalizations.of(context).favorite);
+                },
+              ),
+              Container(
+                height: 8.0,
+              ),
+              _buildItem(
+                "images/facebook.webp",
+                HKNewsLocalizations.of(context).facebook,
+                () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return WebPage(
+                            url:
+                                "https://www.facebook.com/chinadailyhkedition/");
+                      },
+                    ),
+                  );
+                },
+              ),
+              Container(
+                height: 2.0,
+              ),
+              _buildItem(
+                "images/twitter.webp",
+                HKNewsLocalizations.of(context).twitter,
+                () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return WebPage(
+                            url: "https://twitter.com/chinadailyasia");
+                      },
+                    ),
+                  );
+                },
+              ),
+              Container(
+                height: 8.0,
+              ),
+              _buildItem(
+                "images/feedback.webp",
+                HKNewsLocalizations.of(context).feedback,
+                () {
+                  showToast(context, HKNewsLocalizations.of(context).feedback);
+                },
+              ),
+              Container(
+                height: 2.0,
+              ),
+              _buildItem(
+                "images/settings.webp",
+                HKNewsLocalizations.of(context).settings,
+                () {
+                  showToast(context, HKNewsLocalizations.of(context).settings);
+                },
+              )
+            ],
+          );
+        },
       ),
     );
+  }
+
+  void showToast(BuildContext context, String msg) {
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text(msg)));
   }
 
   _buildItem(String icon, String data, onPressed) {

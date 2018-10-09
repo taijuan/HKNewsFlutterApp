@@ -16,7 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ^1.0.0
-  fluttertoast: ^2.0.4
+#  fluttertoast: ^2.0.8
   flutter_webview_plugin: ^0.2.1+2
   video_player: ^0.6.4
   flutter_localizations:
