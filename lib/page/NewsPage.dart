@@ -67,10 +67,9 @@ class _NewsPageState extends BaseState<NewsPage>
           body: TabBarView(
             children: widget.map.values.map((value) {
               if (value == "home") {
-                return HotNewPage(key: ValueKey<String>(value));
+                return HotNewPage();
               } else {
                 return NewPage(
-                  key: ValueKey<String>(value),
                   name: value,
                 );
               }

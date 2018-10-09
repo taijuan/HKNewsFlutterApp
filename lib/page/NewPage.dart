@@ -10,7 +10,7 @@ import 'package:hknews/widget/NewsItem.dart';
 class NewPage extends StatefulWidget {
   final String name;
 
-  const NewPage({Key key, @required this.name}) : super(key: key);
+  const NewPage({Key key, this.name}) : super(key: key);
 
   @override
   _NewPageState createState() {

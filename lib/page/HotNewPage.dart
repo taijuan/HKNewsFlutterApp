@@ -11,7 +11,6 @@ import 'package:hknews/widget/CacheImage.dart';
 import 'package:hknews/widget/NewsItem.dart';
 
 class HotNewPage extends StatefulWidget {
-  const HotNewPage({Key key}) : super(key: key);
   @override
   _HotNewPageState createState() {
     print("${toString()} createState");
