@@ -18,8 +18,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends BaseState<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
-  int _index = 0;
-
   @override
   void initState() {
     print("${widget.toString()} initState");
@@ -45,56 +43,55 @@ class _HomePageState extends BaseState<HomePage>
         }
       },
       tabBar: CupertinoTabBar(
+        activeColor: HKNewsColors.blue,
+        inactiveColor: HKNewsColors.grey,
         items: [
           _buildTab(
-            _index == 0 ? "images/news_selected.webp" : "images/news.webp",
+            "images/news.webp",
+            "images/news_selected.webp",
             HKNewsLocalizations.of(context).news,
-            _index == 0,
           ),
           _buildTab(
-            _index == 1 ? "images/focus_selected.webp" : "images/focus.webp",
+            "images/focus.webp",
+            "images/focus_selected.webp",
             HKNewsLocalizations.of(context).focus,
-            _index == 1,
           ),
           _buildTab(
-            _index == 2 ? "images/epaper_selected.webp" : "images/epaper.webp",
+            "images/epaper.webp",
+            "images/epaper_selected.webp",
             HKNewsLocalizations.of(context).ePaper,
-            _index == 2,
           ),
           _buildTab(
-            _index == 3 ? "images/video_selected.webp" : "images/video.webp",
+            "images/video.webp",
+            "images/video_selected.webp",
             HKNewsLocalizations.of(context).video,
-            _index == 3,
           ),
           _buildTab(
-            _index == 4 ? "images/me_selected.webp" : "images/me.webp",
+            "images/me.webp",
+            "images/me_selected.webp",
             HKNewsLocalizations.of(context).me,
-            _index == 4,
           )
         ],
-        currentIndex: _index,
-        onTap: (index) {
-          _index = index;
-          setState(() {});
-        },
       ),
     );
   }
 
-  _buildTab(String icon, String text, bool select) {
+  _buildTab(String icon, String activeIcon, String text) {
     return BottomNavigationBarItem(
       icon: Image.asset(
         icon,
         width: 24.0,
         height: 24.0,
       ),
+      activeIcon: Image.asset(
+        activeIcon,
+        width: 24.0,
+        height: 24.0,
+      ),
       title: Text(
         text,
-        textDirection: TextDirection.ltr,
-        textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 12.0,
-          color: select ? HKNewsColors.blue : HKNewsColors.grey,
         ),
       ),
     );
