@@ -152,7 +152,7 @@ Future<BaseData<List<EPaper>, Null>> getEPaperData() async {
     await _instance.setString("epaper", json.encode(res.resObject));
   }
   var _instance = await SharedPreferences.getInstance();
-  var _a = json.decode(_instance.getString("epaper"));
+  var _a = json.decode(_instance.getString("epaper") ?? "");
   List<EPaper> a = [];
   if (_a != null) {
     for (var value in _a) {
