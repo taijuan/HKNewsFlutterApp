@@ -86,6 +86,7 @@ class _NewPageState extends BaseState<NewPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     print("${widget.name} build");
     return RefreshIndicator(
       key: _refreshIndicatorKey,

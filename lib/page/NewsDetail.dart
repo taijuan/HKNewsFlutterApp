@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hknews/base/BaseState.dart';
-import 'package:hknews/widget/WebView.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class NewsDetail extends StatefulWidget {
   final String url;
@@ -22,11 +22,11 @@ class _NewsDetailState extends BaseState<NewsDetail> {
 
   @override
   Widget build(BuildContext context) {
-    return WebView(
-      withJavascript: true,
-      url: widget.url,
-      scrollBar: false,
-      withLocalUrl: true,
+    return Scaffold(
+      body: WebView(
+        initialUrl: widget.url,
+        javascriptMode: JavascriptMode.unrestricted,
+      ),
       bottomNavigationBar: Container(
         height: 48.0,
         child: Row(

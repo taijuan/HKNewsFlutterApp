@@ -22,7 +22,7 @@ class HttpManager {
       headers.addAll(header);
     }
     var option =
-        new Options(method: "get", receiveTimeout: 5000, connectTimeout: 5000);
+        new Options(method: "get", receiveTimeout: 5000, sendTimeout: 5000);
     option.headers = headers;
     Dio dio = new Dio();
     Response response;

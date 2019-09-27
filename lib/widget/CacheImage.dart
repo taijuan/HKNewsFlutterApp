@@ -31,14 +31,18 @@ class _CacheImage extends BaseState<CacheImage> {
     return widget.aspectRatio == null
         ? CachedNetworkImage(
             fit: BoxFit.cover,
-            placeholder: Image.asset(widget.placeholder),
+            placeholder:(context,url){
+              return  Image.asset(widget.placeholder);
+            },
             imageUrl: widget.path,
             width: widget.width,
             height: widget.height)
         : AspectRatio(
             aspectRatio: widget.aspectRatio,
             child: CachedNetworkImage(
-              placeholder: Image.asset(widget.placeholder),
+              placeholder:(context,url){
+                return  Image.asset(widget.placeholder);
+              },
               imageUrl: widget.path,
               fit: BoxFit.cover,
             ),

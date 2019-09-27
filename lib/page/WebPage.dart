@@ -3,7 +3,7 @@ import 'package:hknews/HKNewsColors.dart';
 import 'package:hknews/base/BaseState.dart';
 import 'package:hknews/localization/HKNewsLocalizations.dart';
 import 'package:hknews/widget/TitleAppBar.dart';
-import 'package:hknews/widget/WebView.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class WebPage extends StatefulWidget {
   final String url;
@@ -19,11 +19,11 @@ class WebPage extends StatefulWidget {
 class _EPaperDetailState extends BaseState<WebPage> {
   @override
   Widget build(BuildContext context) {
-    return WebView(
-      withJavascript: true,
-      url: widget.url,
-      scrollBar: false,
-      withLocalUrl: true,
+    return Scaffold(
+      body: WebView(
+        initialUrl: widget.url,
+        javascriptMode: JavascriptMode.unrestricted,
+      ),
       appBar: TitleAppBar(
         context: context,
         title: Text(

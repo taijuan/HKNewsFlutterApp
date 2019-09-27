@@ -27,6 +27,7 @@ class _HomePageState extends BaseState<HomePage>
   @override
   Widget build(BuildContext context) {
     print("${widget.toString()} build");
+    super.build(context);
     return CupertinoTabScaffold(
       tabBuilder: (context, index) {
         switch (index) {
@@ -38,7 +39,7 @@ class _HomePageState extends BaseState<HomePage>
             return EPaperPage();
           case 3:
             return VideoPage();
-          case 4:
+          default:
             return MePage();
         }
       },

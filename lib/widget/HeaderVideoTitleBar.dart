@@ -30,8 +30,7 @@ class _HeaderVideoTitleBarState extends BaseState<HeaderVideoTitleBar> {
   bool _isPlaying = false;
 
   initPlayer(String url) {
-    _controller = VideoPlayerController.network(url);
-    _controller
+    _controller = VideoPlayerController.network(url.replaceAll("http://", "https://"))
       ..setLooping(true)
       ..setVolume(1.0)
       ..play()
@@ -43,6 +42,7 @@ class _HeaderVideoTitleBarState extends BaseState<HeaderVideoTitleBar> {
         }
       })
       ..initialize().then((_) {
+        print("22222  $url");
         setState(() {});
       });
   }
@@ -50,6 +50,7 @@ class _HeaderVideoTitleBarState extends BaseState<HeaderVideoTitleBar> {
   _getData() {
     getVideoDetail(widget.data.dataId).then((url) {
       if (url.isNotEmpty && mounted) {
+        print("11111  $url");
         initPlayer(url);
       }
     }).catchError((e) {});

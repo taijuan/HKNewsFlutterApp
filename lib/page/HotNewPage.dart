@@ -78,6 +78,7 @@ class _HotNewPageState extends BaseState<HotNewPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     print("${widget.toString()} build");
     return RefreshIndicator(
       key: _refreshIndicatorKey,

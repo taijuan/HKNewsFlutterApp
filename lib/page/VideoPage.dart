@@ -86,6 +86,7 @@ class _VideoPageState extends BaseState<VideoPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     print("${widget.toString()} build");
     return Scaffold(
       body: _buildRefreshIndicator(),

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:hknews/model/BaseData.dart';
@@ -125,8 +126,11 @@ Future<BaseData<List<News>, List<News>>> getHotNewsData() async {
         "top_focus", json.encode(res.resObject['top_focus']));
   }
   var _instance = await SharedPreferences.getInstance();
-  var _a = json.decode(_instance.getString("allLists"));
-  var _b = json.decode(_instance.getString("top_focus"));
+  var _a = json.decode(_instance.getString("allLists") ?? "[]");
+  var _b = json.decode(_instance.getString("top_focus") ?? "[]"
+      ""
+      ""
+      "");
   List<News> a = [];
   if (_a != null) {
     for (var value in _a) {

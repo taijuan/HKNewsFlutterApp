@@ -53,16 +53,19 @@ class _EPaperPageState extends BaseState<EPaperPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: Stack(
         children: <Widget>[
           Image.asset(
             "images/epaper_background.webp",
             fit: BoxFit.fill,
-            height: 260.0,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.width * 729 / 1080,
           ),
           Container(
-            height: 260.0,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.width * 729 / 1080,
             padding: EdgeInsets.only(left: 36.0, right: 36.0, bottom: 24.0),
             alignment: Alignment.center,
             child: Image.asset(

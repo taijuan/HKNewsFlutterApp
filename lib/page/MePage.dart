@@ -16,6 +16,7 @@ class _MePageState extends BaseState<MePage>
     with AutomaticKeepAliveClientMixin<MePage> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       backgroundColor: HKNewsColors.f5f5f5,
       appBar: TitleAppBar(

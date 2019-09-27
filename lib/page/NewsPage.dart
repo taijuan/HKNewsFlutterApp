@@ -45,6 +45,7 @@ class _NewsPageState extends BaseState<NewsPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: TitleAppBar(
         context: context,
