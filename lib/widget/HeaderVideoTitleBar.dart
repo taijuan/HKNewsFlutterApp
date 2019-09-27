@@ -30,7 +30,7 @@ class _HeaderVideoTitleBarState extends BaseState<HeaderVideoTitleBar> {
   bool _isPlaying = false;
 
   initPlayer(String url) {
-    _controller = VideoPlayerController.network(url.replaceAll("http://", "https://"))
+    _controller = VideoPlayerController.network(url)
       ..setLooping(true)
       ..setVolume(1.0)
       ..play()
